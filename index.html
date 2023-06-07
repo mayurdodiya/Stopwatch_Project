@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <style>
+      body{
+          background-color: rgb(59, 56, 56);
+          text-align: center;
+          padding-top: 150px;
+      }
+      .fontsize{
+          font-size: 150px;
+      }
+      .fontsize1{
+          font-size: 35px;
+          font-weight: 800;
+      }
+      .fontsize2{
+          /* font-size: 18px; */
+          /* font-weight: 300; */
+          padding: 8px;
+          width: 88px;
+          margin-right: 17px;
+          border-radius: 4px;
+
+        }
+        .start{
+            background-color: green;
+            color: white;
+            border: 1px solid green;
+        }
+      .stop{
+          background-color: rgba(108, 108, 231, 0.822);
+          color: white;
+          border: 1px solid rgba(108, 108, 231, 0.822);
+      }
+      
+      .reset{
+          background-color: red;
+          color: white;
+          border: 1px solid red;
+      }
+    </style>
+</head>
+
+<body>
+    <h2>Stop Watch</h2>
+    <div>
+        <span class="fontsize" id="hrs">00</span>
+        <span class="fontsize1" >Hr</span>
+        <span class="fontsize" id="min">00</span>
+        <span class="fontsize1" >Min</span>
+        <span class="fontsize" id="sec">00</span>
+        <span class="fontsize1" >Sec</span>
+        <br><br>
+        <button class="fontsize2 start" onclick="start()">Start</button>
+        <button class="fontsize2 stop" onclick="stop()">Stop</button>
+        <button class="fontsize2 reset" onclick="reset()">Reset</button>
+    </div>
+    <script>
+        var sec = document.getElementById("sec");
+        var seccounter = 00;
+        var mincounter = 00;
+        var hrscounter = 0;
+        var cnt = 0;
+        var min = document.getElementById("min");
+        var hrs = document.getElementById("hrs");
+
+        function start() {
+            cnt = 0;
+            stopwatch();
+        }
+
+        function stop() {
+            cnt = 1;
+            stopwatch();
+        }
+
+        function reset() {
+            seccounter = 00;
+            sec.innerText = seccounter;
+            mincounter = 00;
+            min.innerText = mincounter;
+            hrscounter = 00;
+            hrs.innerText = hrscounter;
+            cnt = 1;
+            console.log(cnt)
+        }
+
+        function stopwatch() {
+            if (cnt == 0) {
+                sec.innerText = seccounter++;
+                setTimeout("stopwatch()", 1000);
+                if (mincounter == 60) {                    
+                    hrscounter++;
+                    hrs.innerText = hrscounter;
+                    mincounter = 00;
+                    min.innerText = mincounter;
+                }
+                if (seccounter == 61) {                    
+                    mincounter++;
+                    min.innerText = mincounter;
+                    seccounter = 00;
+                }
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>
